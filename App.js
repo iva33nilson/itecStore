@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Title from './src/componets/Title';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Title/>
-      <Text>Itec Store</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-=======
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, Text, Keyboard } from 'react-native'
 import { TouchableOpacity } from 'react-native-web';
@@ -79,19 +65,10 @@ salvarNome(){
       </View>
     );
   }
->>>>>>> branch-novo
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-=======
   },
   FormContent:{
     width:"100%",
@@ -165,4 +142,3 @@ ButtonTextc:{
 },
 
 });
->>>>>>> branch-novo
