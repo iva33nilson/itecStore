@@ -10,12 +10,21 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.0",
+<<<<<<< HEAD
     "expo": "~46.0.9",
+=======
+    "@react-native-async-storage/async-storage": "^1.17.10",
+    "expo": "~46.0.7",
+>>>>>>> branch-novo
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.5",
+<<<<<<< HEAD
     "react-native-web": "^0.18.9"
+=======
+    "react-native-web": "^0.18.7"
+>>>>>>> branch-novo
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
