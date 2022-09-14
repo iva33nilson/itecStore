@@ -12,7 +12,7 @@ export default function Form(){
             <TextInput style={styles.TextInput}  placeholder="Usuario"/>
             <Text style={styles.FormLabel}>Senha</Text>
             <TextInput secureTextEntry={true} style={styles.TextInput} placeholder="Senha"/>
-            <TouchableOpacity style={styles.ButtonCalc}><Text style={styles.ButtonText}>Criar Conta</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.ButtonCalc}><Text style={styles.ButtonTextc}>Criar Conta</Text></TouchableOpacity>
             <TouchableOpacity style={styles.ButtonCalcc}><Text style={styles.ButtonTextc}>Já tenho Usuario</Text></TouchableOpacity>
            </View>
         </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         borderRadius:50,
         alignItems:"center",
         justifyContent:"center",
-        width:"90%",
+        width:"60%",
         backgroundColor:"#7D0DFF",
         paddingTop:8,
         paddingBottom:8,
