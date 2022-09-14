@@ -32,9 +32,6 @@ async componentDidUpdate(_, prevState){
 
 }
 
-
-
-
 salvarNome(){
   this.setState({
     nome: this.state.input
@@ -69,6 +66,8 @@ salvarNome(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
+    justifyContent: "center",
   },
   FormContent:{
     width:"100%",
