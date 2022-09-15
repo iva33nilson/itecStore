@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput, Text, Keyboard } from 'react-native'
+import { StyleSheet, View, TextInput, Text, Keyboard, FlatList } from 'react-native'
 import { TouchableOpacity } from 'react-native-web';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import api from './src/services/api';
 import Title from './src/Title/'
+import Filmes from './src/filmes';
 
 
 
@@ -12,7 +16,8 @@ export default class App extends Component{
     super(props);
     this.state = {
       input: '',
-      nome: ''
+      nome: '',
+      filmes: []
      };
      this.salvarNome = this.salvarNome.bind(this);
   }
@@ -40,7 +45,12 @@ salvarNome(){
   Keyboard.dismiss();
 
 }
-
+async componentDidMount(){
+  const response = await api.get('r-api/?api=filmes');
+  this.setState({
+    filmes: response.data
+  });
+}
   render(){
     return (
       
@@ -57,6 +67,14 @@ salvarNome(){
             <TextInput secureTextEntry={true} style={styles.TextInput} placeholder="Senha"/>
             <TouchableOpacity style={styles.ButtonCalc} onPress={this.salvarNome} ><Text style={styles.ButtonTextc}>Criar Conta</Text></TouchableOpacity>
             <TouchableOpacity style={styles.ButtonCalcc}><Text style={styles.ButtonTextc}>Já tenho Usuario</Text></TouchableOpacity>
+           </View>
+            <FlatList
+              data={this.state.filmes}
+              keyExtractor={item => item.id.toString()}
+              renderItem={ ({item}) => <Filmes data={item}/>}
+            />
+           <View>
+
            </View>
         </View>
       </View>
