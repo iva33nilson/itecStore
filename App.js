@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput, Text, Keyboard, FlatList } from 'react-native'
+import { StyleSheet, View, TextInput, Text, Keyboard, FlatList, ActivityIndicator } from 'react-native'
 import { TouchableOpacity } from 'react-native-web';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -17,7 +17,8 @@ export default class App extends Component{
     this.state = {
       input: '',
       nome: '',
-      filmes: []
+      filmes: [],
+      loading: true
      };
      this.salvarNome = this.salvarNome.bind(this);
   }
@@ -48,37 +49,45 @@ salvarNome(){
 async componentDidMount(){
   const response = await api.get('r-api/?api=filmes');
   this.setState({
-    filmes: response.data
+    filmes: response.data,
+    loading: false
   });
 }
   render(){
-    return (
-      
-      <View style={styles.container}>
-        <Title/>
-        <Text style={styles.Form}>{this.state.nome}</Text>
-          <View style={styles.FormContent}>
-           <View style={styles.Form}>
-           <Text style={styles.FormLabel}>Nome</Text>
-            <TextInput style={styles.TextInput}  placeholder="Nome" value={this.state.input} onChangeText={(text)=> this.setState({input: text})} />
-            <Text style={styles.FormLabel}>Usuario</Text>
-            <TextInput style={styles.TextInput}  placeholder="Usuario"/>
-            <Text style={styles.FormLabel}>Senha</Text>
-            <TextInput secureTextEntry={true} style={styles.TextInput} placeholder="Senha"/>
-            <TouchableOpacity style={styles.ButtonCalc} onPress={this.salvarNome} ><Text style={styles.ButtonTextc}>Criar Conta</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.ButtonCalcc}><Text style={styles.ButtonTextc}>Já tenho Usuario</Text></TouchableOpacity>
-           </View>
-            <FlatList
-              data={this.state.filmes}
-              keyExtractor={item => item.id.toString()}
-              renderItem={ ({item}) => <Filmes data={item}/>}
-            />
-           <View>
-
-           </View>
+    if(this.state.loading){
+      return(
+        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+          <ActivityIndicator
+           color="#000" sizer={950}
+          />
         </View>
-      </View>
-    );
+      )
+    }else{
+      return (
+          <View style={styles.container}>
+            <Title/>
+            <Text style={styles.Form}>{this.state.nome}</Text>
+              <View style={styles.FormContent}>
+                  <View style={styles.Form}>
+                    <Text style={styles.FormLabel}>Nome</Text>
+                      <TextInput style={styles.TextInput}  placeholder="Nome" value={this.state.input} onChangeText={(text)=> this.setState({input: text})} />
+                      <Text style={styles.FormLabel}>Usuario</Text>
+                      <TextInput style={styles.TextInput}  placeholder="Usuario"/>
+                      <Text style={styles.FormLabel}>Senha</Text>
+                      <TextInput secureTextEntry={true} style={styles.TextInput} placeholder="Senha"/>
+                      <TouchableOpacity style={styles.ButtonCalc} onPress={this.salvarNome} ><Text style={styles.ButtonTextc}>Criar Conta</Text></TouchableOpacity>
+                      <TouchableOpacity style={styles.ButtonCalcc}><Text style={styles.ButtonTextc}>Já tenho Usuario</Text></TouchableOpacity>
+                    
+                      </View>
+                    <FlatList
+                      data={this.state.filmes}
+                      keyExtractor={item => item.id.toString()}
+                      renderItem={ ({item}) => <Filmes data={item}/>}
+                      />
+                </View>
+          </View>
+        );
+    }
   }
 }
 const styles = StyleSheet.create({
