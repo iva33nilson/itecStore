@@ -79,11 +79,7 @@ async componentDidMount(){
                       <TouchableOpacity style={styles.ButtonCalcc}><Text style={styles.ButtonTextc}>Já tenho Usuario</Text></TouchableOpacity>
                     
                       </View>
-                    <FlatList
-                      data={this.state.filmes}
-                      keyExtractor={item => item.id.toString()}
-                      renderItem={ ({item}) => <Filmes data={item}/>}
-                      />
+                    
                 </View>
           </View>
         );
