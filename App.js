@@ -56,10 +56,14 @@ async componentDidMount(){
   render(){
     if(this.state.loading){
       return(
-        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-          <ActivityIndicator
-           color="#000" sizer={950}
-          />
+        <View >
+          <div class="spinner">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
         </View>
       )
     }else{
